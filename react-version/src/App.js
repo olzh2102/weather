@@ -28,8 +28,6 @@ class App extends React.Component {  // creates instance of App that extends Rea
 		const responseData = await apiCall.json();
 
 		if(city && country) {
-			console.log(responseData);
-
 			this.setState({
 				temperature: responseData.main.temp,
 				city: responseData.name,
@@ -53,16 +51,28 @@ class App extends React.Component {  // creates instance of App that extends Rea
 	render() {
 		return (
 			<div>
-				<Titles />
-				<Form getWeather={this.getWeather}/> {/* setting props to call getweather function */}
-				<Weather
-					temperature={this.state.temperature}
-					city={this.state.city}
-					country={this.state.country}
-					humidity={this.state.humidity}
-					description={this.state.description}
-					error={this.state.error}
-				/>
+				<div className="wrapper">
+					<div className="main">
+						<div className="container">
+							<div className="row">
+								<div className="col-xs-5 title-container">
+									<Titles />
+								</div>
+								<div className="col-xs-7 form-container">
+									<Form getWeather={this.getWeather}/> {/* setting props to call getweather function */}
+									<Weather
+										temperature={this.state.temperature}
+										city={this.state.city}
+										country={this.state.country}
+										humidity={this.state.humidity}
+										description={this.state.description}
+										error={this.state.error}
+									/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		);
 	}
