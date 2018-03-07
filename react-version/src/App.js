@@ -38,6 +38,15 @@ class App extends React.Component {  // creates instance of App that extends Rea
 				description: responseData.weather[0].description,
 				error: ""
 			});
+		} else {
+			this.setState({
+				temperature: undefined,
+				city: undefined,
+				country: undefined,
+				humidity: undefined,
+				description: undefined,
+				error: "Please enter city and country."
+			});
 		}
 	}
 
