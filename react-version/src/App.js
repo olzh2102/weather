@@ -26,16 +26,19 @@ class App extends React.Component {  // creates instance of App that extends Rea
 		const apiCall = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`);
 
 		const responseData = await apiCall.json();
-		console.log(responseData);
 
-		this.setState({
-			temperature: responseData.main.temp,
-			city: responseData.name,
-			country: responseData.sys.country,
-			humidity: responseData.main.humidity,
-			description: responseData.weather[0].description,
-			error: ""
-		});
+		if(city && country) {
+			console.log(responseData);
+
+			this.setState({
+				temperature: responseData.main.temp,
+				city: responseData.name,
+				country: responseData.sys.country,
+				humidity: responseData.main.humidity,
+				description: responseData.weather[0].description,
+				error: ""
+			});
+		}
 	}
 
 	render() {
